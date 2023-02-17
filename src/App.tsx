@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import logo from './logo.svg';
 import {SearchPage} from './utilities/ui';
-//import {Node} from './utilities/nodes'
 import './App.css';
 import userEvent from '@testing-library/user-event';
 
@@ -26,8 +25,8 @@ function App() {
     <div className="App">
       <BrowserRouter >
         <Routes>
-          <Route path='/' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />          
-          <Route path='/:urlParams' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />       
+          <Route path='/proj/' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />          
+          <Route path='/proj/:urlParams' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />       
         </Routes>
       </BrowserRouter>
     </div>
