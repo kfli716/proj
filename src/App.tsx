@@ -25,7 +25,7 @@ function App() {
     <div className="App">
       <BrowserRouter >
         <Routes>
-          <Route path='/proj/' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />          
+          <Route path='/' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />          
           <Route path='/proj/:urlParams' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />       
         </Routes>
       </BrowserRouter>

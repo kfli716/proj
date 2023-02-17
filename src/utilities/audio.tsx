@@ -16,6 +16,7 @@ function playAudio(audio: HTMLAudioElement, source: Blob | undefined, nodes: Nod
         return;
     }
     let src = `./audio/${nodes[i].name}.mp3`
+    console.log(src);
     if(source){
         const name = nodes[i].name;
         const offset = list[name].offset, fileSize = list[name].fileSize;

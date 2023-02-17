@@ -47,6 +47,7 @@ function SearchPage({ source, play, setPlay }: inputProps) {
         setOutput(arr.map(s => new Node(s, s in list)));
         setPlay(-1);
         setInput(arr.join(' '));
+        console.log(`../proj/${input}`);
         navigate(`../proj/${input}`)
     }
 
