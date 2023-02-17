@@ -20,7 +20,7 @@ function App() {
         setSource(blob);
       }
     })
-  }, [play])
+  }, [play, source]);
 
   return (
     <div className="App">
