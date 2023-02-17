@@ -47,8 +47,8 @@ function SearchPage({ source, play, setPlay }: inputProps) {
         setOutput(arr.map(s => new Node(s, s in list)));
         setPlay(-1);
         setInput(arr.join(' '));
-        console.log(`../proj/${input}`);
-        navigate(`../proj/${input}`)
+        console.log(`../${input}`);
+        navigate(`../${input}`)
     }
 
     useEffect(() => {
@@ -58,7 +58,7 @@ function SearchPage({ source, play, setPlay }: inputProps) {
                 .split(' ').filter(s => s !== '') as string[];
             let cur = arr.join(' ');
             if (cur !== urlParams) {
-                navigate(`../proj/${cur}`);
+                navigate(`../${cur}`);
                 return;
             }
             setOutput(arr.map(s => new Node(s, s in list)));

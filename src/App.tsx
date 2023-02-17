@@ -23,10 +23,10 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter >
+      <BrowserRouter basename='proj'>
         <Routes>
           <Route path='/' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />          
-          <Route path='/proj/:urlParams' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />       
+          <Route path='/:urlParams' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />       
         </Routes>
       </BrowserRouter>
     </div>
