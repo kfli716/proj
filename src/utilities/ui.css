@@ -1,0 +1,91 @@
+.searchPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+}
+
+.searchComponents, .resultComponents{
+    width: 70vw;    
+}
+
+.searchComponents{
+    margin-top: 25vh;
+    margin-bottom: 40px;    
+    display: flex;
+    align-items: center;
+}
+
+.inputBar{
+    position: relative;
+    height: 25px;
+    width: 70vw;
+    float: left;    
+}
+
+.button{
+    margin-left: 10px;
+}
+
+.resultComponents{
+    border: 5px solid black;    
+    padding: 5px;
+    height: 40vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.resultComponents::after{
+    content: "";
+    flex: auto;
+}
+
+/*
+.searchPage{
+    margin: 25vh auto 0 auto;
+    max-width: 70%;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.searchComponents, .resultComponents{
+    width: 70vw;
+}
+
+.searchComponents{    
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputBar{
+    width: min(55vw,1100px);
+    margin: 10px;
+    text-transform: lowercase;
+}
+
+.button{    
+    margin-left: 10px;
+}
+
+.resultComponents{    
+    border: 5px solid black;
+    width: min(1000px, 65vw);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.envelope{
+    margin: 5px 15px 0 0;
+}
+*/

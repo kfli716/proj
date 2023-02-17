@@ -1,24 +1,35 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import logo from './logo.svg';
+import {SearchPage} from './utilities/ui';
+//import {Node} from './utilities/nodes'
 import './App.css';
+import userEvent from '@testing-library/user-event';
 
 function App() {
+  const [play, setPlay] = useState<number>(Infinity);  
+  const [source, setSource] = useState<Blob|undefined>();
+
+  useEffect(() =>{
+    if(source !== undefined) return;
+    caches.match('./cache_resources/mergedAudio.mp3')
+    .then((cacheRes)=> cacheRes?.blob())
+    .then((blob) =>{
+      if(blob){
+        console.log('blob exists');
+        setSource(blob);
+      }
+    })
+  }, [play])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter >
+        <Routes>
+          <Route path='/' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />          
+          <Route path='/:urlParams' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />       
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
