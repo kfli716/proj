@@ -16,7 +16,7 @@ function App() {
     .then((cacheRes)=> cacheRes?.blob())
     .then((blob) =>{
       if(blob){
-        console.log('blob exists');
+        console.log('cache exists');
         setSource(blob);
       }
     })
