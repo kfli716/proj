@@ -7,8 +7,10 @@ function shareUtil(output: Node[]){
             validWords = validWords + `%20${node.name}`;
         }
     }
-
-    const url =  window.location.href + validWords.substring(3);
+    console.log(window.location.href);
+    const ref =  window.location.href;
+    let i = ref.lastIndexOf('/');
+    const url = ref.substring(i + 1) + validWords.substring(3);
     if(navigator.share !== undefined){
         navigator.share({url})
         .then(
