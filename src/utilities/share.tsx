@@ -8,7 +8,7 @@ function shareUtil(output: Node[]){
         }
     }
 
-    const url =  window.location.href + "/" + validWords.substring(3);
+    const url =  window.location.href + validWords.substring(3);
     if(navigator.share !== undefined){
         navigator.share({url})
         .then(
