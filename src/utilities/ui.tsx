@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faStop, faUndo } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faStop, faUndo, faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import './ui.css'
 import audioList from '../audioList.json';
 import playAudio from './audio';
-
+import shareUtil from './share'
+import Explantions from './explanations';
 const list = audioList as {
     [key: string]: { offset: number, fileSize: number }
 }
@@ -47,7 +48,7 @@ function SearchPage({ source, play, setPlay }: inputProps) {
         setOutput(arr.map(s => new Node(s, s in list)));
         setPlay(-1);
         setInput(arr.join(' '));
-        navigate(`../${input}`)
+        //navigate(`../${input}`)
     }
 
     useEffect(() => {
@@ -74,7 +75,7 @@ function SearchPage({ source, play, setPlay }: inputProps) {
         else if (play !== Infinity) {
             playAudio(audio, source, output, play, play + 1, setPlay);
         }
-    }, [play, setPlay, output])
+    }, [play, setPlay])
 
     return (
         <div className='searchPage'>
@@ -116,7 +117,6 @@ function SearchPage({ source, play, setPlay }: inputProps) {
                         setPlay(Infinity);
                     }}
                 />
-
                 <FontAwesomeIcon
                     icon={faUndo}
                     className='button undo'
@@ -127,7 +127,19 @@ function SearchPage({ source, play, setPlay }: inputProps) {
                         setInput('');
                     }}
                 />
+                <FontAwesomeIcon
+                    icon={faShareAlt}
+                    className='button share'
+                    onClick={() => {
+                        if (input === '') return;
+                        let arr = input.split(' ').filter(s => s !== '');
+                        setOutput(arr.map(s => new Node(s, s in list)));
+                        resetColor();
+                        setInput(arr.join(' '));
+                        shareUtil(output);}}
+                />
             </div>
+
             <div className='resultComponents'>
                     {
                         output?.map((node, i: number) => {
@@ -146,7 +158,8 @@ function SearchPage({ source, play, setPlay }: inputProps) {
                             )
                         })
                     }
-                </div>
+            </div>
+            <Explantions />
         </div>)
 }
 

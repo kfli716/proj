@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      {/*change the base name to the folder in which the web is deployed*/}
       <BrowserRouter basename='/proj'>
         <Routes>
           <Route path='/' element={<SearchPage source={source} play={play} setPlay={setPlay} />} />          
