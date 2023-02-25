@@ -10,8 +10,6 @@ function shareUtil(output: Node[]){
 
     const url =  window.location.href + "/" + validWords.substring(3);
     if(navigator.share !== undefined){
-        console.log(url);
-        navigator.clipboard.writeText(url);
         navigator.share({url})
         .then(
             () => console.log('shared')

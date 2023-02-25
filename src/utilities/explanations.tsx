@@ -9,7 +9,7 @@ function Explantions(){
                     You can use <FontAwesomeIcon icon={faUndo} /> to clear the input.
                 </li>
                 <li>
-                    You can use <FontAwesomeIcon icon={faShareAlt}/> to share the pronunciations of the words you typed, all wrongly spelled words will be filtered.
+                    You can use <FontAwesomeIcon icon={faShareAlt}/> to share the pronunciations of the words you entered, all wrongly spelled words will be filtered.
                 </li>
                 <li>
                     If your browser do not support sharing, the website link will be copied by your device.
