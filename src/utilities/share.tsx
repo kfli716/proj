@@ -10,7 +10,7 @@ function shareUtil(output: Node[]){
     console.log(window.location.href);
     const ref =  window.location.href;
     let i = ref.lastIndexOf('/');
-    const url = ref.substring(i + 1) + validWords.substring(3);
+    const url = ref.substring(0, i + 1) + validWords.substring(3);
     if(navigator.share !== undefined){
         navigator.share({url})
         .then(
