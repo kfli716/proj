@@ -6,13 +6,13 @@ function Explantions(){
         <div className='explanations'>
             <ol>
                 <li>
-                    You can use <FontAwesomeIcon icon={faUndo} /> to clear the input.
+                    Use <FontAwesomeIcon icon={faUndo} /> to clear the input.
                 </li>
                 <li>
-                    You can use <FontAwesomeIcon icon={faShareAlt}/> to share the pronunciations of the words you entered, all wrongly spelled words will be filtered.
+                    Use <FontAwesomeIcon icon={faShareAlt}/> to share the pronunciations of the words you entered, all wrongly spelled words will be filtered.
                 </li>
                 <li>
-                    If your browser do not support sharing, the website link will be copied by your device.
+                    If your browser does not support sharing, the website link will be copied by your device.
                 </li>
             </ol>
         </div>
