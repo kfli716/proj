@@ -46,6 +46,10 @@
     flex: auto;
 }
 
+.envelope:hover{
+    cursor: pointer;
+}
+
 .explanations{
     margin-top: 25px;
     width: 75%;

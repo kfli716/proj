@@ -1,16 +1,20 @@
-import {Node} from './ui'
+import {Node} from './ui';
 
-function shareUtil(output: Node[]){
+function shareUtil(output: Node[], hasURLParam: boolean){
+    console.log(`has URL input? ${hasURLParam} `)
     let validWords = "";
     for(let node of output){
+        console.log(node.name);
         if(node.isWord){
-            validWords = validWords + `%20${node.name}`;
+            validWords = validWords + node.name;
         }
     }
-    console.log(window.location.href);
-    const ref =  window.location.href;
-    let i = ref.lastIndexOf('/');
-    const url = ref.substring(0, i + 1) + validWords.substring(3);
+    let ref =  window.location.href;
+    if(hasURLParam){
+        ref = ref.substring(0, ref.lastIndexOf('/') + 1);
+    }
+    const url = ref + validWords;
+
     if(navigator.share !== undefined){
         navigator.share({url})
         .then(

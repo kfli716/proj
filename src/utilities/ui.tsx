@@ -48,19 +48,21 @@ function SearchPage({ source, play, setPlay }: inputProps) {
         setOutput(arr.map(s => new Node(s, s in list)));
         setPlay(-1);
         setInput(arr.join(' '));
-        //navigate(`../${input}`)
     }
 
     useEffect(() => {
-        if (urlParams !== undefined) {
-            //format the parameters. For example if the input is "aa1    aa2", this formats it to "aa1 aa2" 
-            let arr = urlParams.toLowerCase()
-                .split(' ').filter(s => s !== '') as string[];
-            let cur = arr.join(' ');
-            if (cur !== urlParams) {
-                navigate(`../${cur}`);
-                return;
+        if (urlParams !== undefined) {            
+            let str = urlParams.toLowerCase();
+            let arr: string[] = [];
+            for(let l = 0, r = 0; l < str.length; l++){
+                if(str[l] == ' ') continue;
+                r = l;
+                while(r < str.length && (str[r] < '0' || str[r] > '9')) r++;
+                arr.push(str.substring(l, r + 1));
+                l = r;
             }
+            console.log(arr);
+            let cur = arr.join(' ');
             setOutput(arr.map(s => new Node(s, s in list)));
             setInput(cur);
         }
@@ -75,7 +77,7 @@ function SearchPage({ source, play, setPlay }: inputProps) {
         else if (play !== Infinity) {
             playAudio(audio, source, output, play, play + 1, setPlay);
         }
-    }, [play, setPlay])
+    }, [play, setPlay, output])
 
     return (
         <div className='searchPage'>
@@ -91,10 +93,9 @@ function SearchPage({ source, play, setPlay }: inputProps) {
                         setInput(event.target.value.toLowerCase());
                     }}
                     onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
-                        if (event.key === 'Enter') {
+                        if(event.key == 'Enter'){
                             audio.pause();
                             resetColor();
-                            setPlay(Infinity);
                             playUtil();
                         }
                     }}
@@ -131,12 +132,14 @@ function SearchPage({ source, play, setPlay }: inputProps) {
                     icon={faShareAlt}
                     className='button share'
                     onClick={() => {
+                        /*
                         if (input === '') return;
                         let arr = input.split(' ').filter(s => s !== '');
                         setOutput(arr.map(s => new Node(s, s in list)));
                         resetColor();
                         setInput(arr.join(' '));
-                        shareUtil(output);}}
+                        */
+                        shareUtil(output, urlParams !== undefined);}}
                 />
             </div>
 
@@ -146,7 +149,7 @@ function SearchPage({ source, play, setPlay }: inputProps) {
                             return (
                                 <div
                                     key={i}
-                                    className={node.isWord ? 'envelope words' : 'envelope'}
+                                    className='envelope'
                                     style={{ color: node.isWord ? 'black' : 'red' }}
                                     onClick={() => {
                                         resetColor();
