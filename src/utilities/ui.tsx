@@ -7,6 +7,7 @@ import audioList from '../audioList.json';
 import playAudio from './audio';
 import shareUtil from './share'
 import Explantions from './explanations';
+
 const list = audioList as {
     [key: string]: { offset: number, fileSize: number }
 }
